@@ -1,0 +1,143 @@
+input.model,
+textarea.model {
+    background: rgb(1,1,1,0);
+    border:0px;
+    resize: none;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    width: 100%;
+}
+.disabled{
+    pointer-events: none;
+    color: silver;
+}
+.helper{
+    display:inline-block;
+    position: relative;
+}
+.helper .content{
+    position: absolute;
+    left: -120;
+    font-size: 17px;
+    font-style: italic;
+    background: #f3f3f3;
+    padding: 10px;
+    text-align: right;
+}
+body{
+    width:100%;
+    padding: 0;
+    margin:0;
+}
+.container {
+    margin: 0 auto;
+    max-width:800px;
+    height: 100%;
+    background:#f3f3f3;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.container .header{
+    box-sizing: border-box;
+    font-size:2em;
+    width: 100%;
+    height: auto;
+    float:left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top:10px;
+}
+
+
+
+
+
+.container .field{
+    padding :10px;
+    width: 50%;
+    float:left;
+    box-sizing: border-box;
+}
+.container .field .title{
+    font-size:1.5em;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.container .field .title::before{
+    content: "";
+    height: 1px;
+    background: black;
+    flex: 0.1;
+    margin: 3px;
+    
+}
+
+.summary{
+    width: 100%;
+    height: auto;
+    background: rgb(1,1,1,0);
+    border: 0px;
+    text-align: center;
+    font-style: italic;
+    font-family: inherit;
+    font-size:inherit;
+    resize: none;
+}
+
+.save{
+    position: absolute;
+    right:10em;
+}
+.container .field .desc{
+    margin-top:5px;
+    display: flex;
+    padding: 3px;
+    padding-left: 2.3em;
+
+}
+i.fa{
+    margin-right:8px;
+
+}
+.container .group{
+    clear: both;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    float:left;
+}
+
+.container .group-header{
+    font-size: 1.5em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    float: left;
+    padding-top:10px;
+    box-sizing: border-box;
+}
+
+.container .group-header::before{
+    content: "";
+    height: 1px;
+    margin:.2em;
+    flex: 0.05;
+    background: black;
+}
+.container .group-header::after{
+    content: "";
+    height: 1px;
+    margin:.2em;
+    flex: 1;
+    background: black;
+}
+
+
+
+.container .group-body{
+    width:100%;
+    float:left;
+}

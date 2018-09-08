@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <script src="https://unpkg.com/deepmerge@2.1.1/dist/umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="myCv" class="container" style="margin-top:30px;">
+        <br>
+        <!-- Name-->
+        <input v-model="fullname" class="model header" />
+
+        <!-- Summary-->
+        <textarea v-if="summary" class="model summary" v-model="summary">
+           </textarea>
+        <div v-else-if="!summary">
+            <a v-on:click="summary = 'this is summary' "> Click to add summary</a>
+        </div>
+
+        <div class="group">
+            <div class="group-header">
+                <div class="helper">
+                    <div class="content">
+                            <a v-on:click="info.phone='555-555-555'" v-bind:class="{ disabled:info.phone }"><i class="fa fa-phone"></i>Phone</a><br>    
+                            <a v-on:click="info.phone='555-555-555'" v-bind:class="{ disabled:info.phone }"><i class="fa fa-phone"></i>Phone</a><br>    
+                        </div>
+                </div>
+                <i class="fa fa-info-circle"></i>Personal Information
+
+            </div>
+            <div class="group-body">
+
+                <div class="field">
+                    <div v-if="info.phone" class="desc">
+                        <i class="fa fa-phone"> </i>
+                        <input class="model" v-model="info.phone" />
+                    </div>
+                    <div v-if="info.linkedin" class="desc">
+                        <i class="fa fa-linkedin"> </i>
+                        <input class="model" v-model="info.linkedin" />
+                    </div>
+                    <div v-if="info.github" class="desc">
+                        <i class="fa fa-github"> </i>
+                        <input class="model" v-model="info.github" />
+                    </div>
+                    <div v-if="info.google" class="desc">
+                        <i class="fa fa-google"> </i>
+                        <input class="model" v-model="info.google" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div v-if="info.birth" class="desc">
+                        <i class="fa fa-birthday-cake"></i>
+                        <input class="model" v-model="info.birth">
+                    </div>
+                    <div v-if="info.address" class="desc">
+                        <i class="fa fa-map-marker"></i>
+                        <input class="model" v-model="address">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <div class="group-header">
+                <i class="fa fa-black-tie"></i> Experience
+            </div>
+            <div class="job" style="display: flex; flex-direction: column; padding:10px; padding-left:35px;width:100%; float:left; box-sizing: border-box ">
+                <div class="company" style="font-weight: 600; width:100%;flex:2; "> Innova Solutions</div>
+                <div class="time" style="flex:1; margin-top:5px;"><i class="fa fa-calendar"></i>2017 Sep - (Software Specialist)
+                </div>
+            </div>
+        </div>
+        <input v-on:click="save" class="save" type="button" value="save">
+
+    </div>
+</body>
+
+
+
+<script>
+
+    var initial_data = {
+        fullname: "Okan Ertürk",
+        summary: "",
+        info: {
+            phone: "+90 555 555 555",
+            linkedin: "www.linkedin.com/in/ozan-ertürk",
+            github: "https://github.com/ozanerturk",
+            google: "ozanerturk17@gmail.com",
+            birth: "17 July 1995",
+            address: "İstanbul/Turkey"
+        },
+    }
+
+    var app = new Vue({
+        el: "#myCv",
+        data: function () {
+            let data = localStorage.getItem("CV-data");
+            if (data) {
+                return deepmerge(initial_data, JSON.parse(data));
+            }
+            return initial_data;
+
+        },
+        methods: {
+            save: function () {
+                localStorage.setItem("CV-data", JSON.stringify(this.$data));
+                alert("saved!");
+            }
+        }
+    });
+
+
+</script>
+</html>
